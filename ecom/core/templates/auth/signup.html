@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="messages">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Create Account</h2>
+        <p class="auth-subtitle">Join Green-Basket for fresh organic produce</p>
+        
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" value="{{ data.fullname }}" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                {% if errors.fullname %}
+                    <span class="form-error">{{ errors.fullname }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" value="{{ data.email }}" id="email" name="email" placeholder="email@example.com" required>
+                    {% if errors.email %}
+                        <span class="form-error">{{ errors.email }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Phone Number</label>
+                    <input type="tel" value="{{ data.phonenumber }}" id="phonenumber" name="phonenumber" placeholder="123-456-7890" required>
+                    {% if errors.phonenumber %}
+                        <span class="form-error">{{ errors.phonenumber }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="********" required>
+                    {% if errors.password %}
+                        <span class="form-error">{{ errors.password }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="********" required>
+                    {% if errors.confirm_password %}
+                        <span class="form-error">{{ errors.confirm_password }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Street Address</label>
+                <input type="text" value="{{ data.address }}" id="address" name="address" placeholder="123 Organic Lane" required>
+                {% if errors.address %}
+                    <span class="form-error">{{ errors.address }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" value="{{ data.city }}" id="city" name="city" placeholder="Your City" required>
+                {% if errors.city %}
+                    <span class="form-error">{{ errors.city }}</span>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn-auth">Sign Up</button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Already have an account? <a href="{% url "login" %}">Login here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

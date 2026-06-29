@@ -1,0 +1,175 @@
+/* --- Auth Page Styles --- */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    padding: 40px 20px;
+    background-color: var(--background-color);
+}
+
+.auth-card {
+    background: #fff;
+    width: 100%;
+    max-width: 650px; /* Slightly wider for better spacing */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.auth-header {
+    margin-bottom: 30px;
+}
+
+.leaf-icon {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.auth-card h2 {
+    font-size: 28px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.auth-card p {
+    color: #777;
+    font-size: 15px;
+}
+
+.auth-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%; /* Now works perfectly with border-box */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* FIX: Prevent inputs from going outside */
+.form-row {
+    display: grid;
+    /* minmax(0, 1fr) forces the browser to allow the column to be smaller than the input's default size */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn-auth {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-auth:hover {
+    background-color: #218838;
+}
+
+.auth-footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr; /* Stack inputs on mobile */
+        gap: 0;
+    }
+    
+    .auth-card {
+        padding: 25px;
+    }
+}
+
+
+/* Additional styles specifically for Login options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--primary-color); /* Makes checkbox green */
+}
+
+.remember-me label {
+    cursor: pointer;
+    color: #666;
+    margin-bottom: 0; /* Remove the margin from .form-group label */
+}
+
+.forgot-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
