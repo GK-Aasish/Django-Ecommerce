@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="product-detail-container">
+    <div class="product-detail-grid">
+        
+        <!-- Left Side: Product Image -->
+        <div class="product-gallery">
+            <!-- Replace with your actual static image path -->
+            <img src="{% static 'img/apples.jpg' %}" alt="Organic Fuji Apples" id="main-product-image">
+            
+            <!-- Thumbnails -->
+            <div class="thumbnail-grid">
+                <img src="{% static 'img/apples.jpg' %}" class="thumb active">
+                <!-- Add more images here if you have them -->
+                <img src="{% static 'img/bananas.jpeg' %}" class="thumb">
+                <img src="{% static 'img/carrots.jpg' %}" class="thumb">
+            </div>
+        </div>
+
+        <!-- Right Side: Product Info -->
+        <div class="product-info">
+            <nav class="breadcrumb">
+                <a href="/">Home</a> &gt; <a href="/shop">Shop</a> &gt; Fruits
+            </nav>
+
+            <h1>Organic Fuji Apples</h1>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>(4.5/5 based on 120 reviews)</span>
+            </div>
+
+            <p class="price">$3.99 <span class="unit">/ lb</span></p>
+            
+            <div class="description">
+                <h3>Description</h3>
+                <p>Our Organic Fuji Apples are hand-picked from the finest orchards. Known for their extreme sweetness and crisp texture, these apples are perfect for snacking, baking, or adding to a fresh autumn salad. Grown without synthetic pesticides or fertilizers.</p>
+            </div>
+
+            <div class="purchase-options">
+                <div class="quantity-selector">
+                    <button type="button" onclick="changeQty(-1)">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button type="button" onclick="changeQty(1)">+</button>
+                </div>
+                
+                <button class="btn-add-to-cart">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+            </div>
+
+            <div class="extra-info">
+                <p><strong>SKU:</strong> GB-101</p>
+                <p><strong>Availability:</strong> <span class="in-stock">In Stock</span></p>
+                <p><strong>Origin:</strong> Washington State, USA</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function changeQty(amount) {
+        let qtyInput = document.getElementById('quantity');
+        let currentValue = parseInt(qtyInput.value);
+        let newValue = currentValue + amount;
+        if (newValue >= 1) {
+            qtyInput.value = newValue;
+        }
+    }
+</script>
+{% endblock content %}
