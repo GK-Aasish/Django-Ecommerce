@@ -1,17 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="hero">
-        <img src="#" alt="Fresh Produce">
-        <h2>Welcome to Green-Basket</h2>
-        <p>Your one-stop shop for fresh and organic products.</p>
-        <a href="#" class="btn">Shop Now</a>
+{% load static %}
+    <!-- Advertisement Slider -->
+    <div class="advertisements" id="ad-slider">
+        <div class="ad active">
+            <img src="{% static 'img/Advertisement/ad1.png' %}" alt="Advertisement 1">
+        </div>
+        <div class="ad">
+            <img src="{% static 'img/Advertisement/ad2.png' %}" alt="Advertisement 2">
+        </div>
+        <div class="ad">
+            <img src="{% static 'img/Advertisement/ad3.png' %}" alt="Advertisement 3">
+        </div>
+        <div class="ad">
+            <img src="{% static 'img/Advertisement/ad4.png' %}" alt="Advertisement 4">
+        </div>
     </div>
+
     <div class="featured">
         <h2>Featured Products</h2>
         <div class="product-grid">
+            <!-- Product cards remain the same as your previous code -->
             <div class="product-card">
                 <div>
-                    <img src="static/img/apples.jpg" alt="Product 1">
+                    <img src="{% static 'img/apples.jpg' %}" alt="Product 1">
                     <h3>Organic Apples</h3>
                     <p>$3.99 / lb</p>
                 </div>
@@ -19,7 +31,7 @@
             </div>
             <div class="product-card">
                 <div>
-                    <img src="static/img/carrots.jpg" alt="Product 2">
+                    <img src="{% static 'img/carrots.jpg' %}" alt="Product 2">
                     <h3>Fresh Carrots</h3>
                     <p>$2.49 / lb</p>
                 </div>
@@ -27,7 +39,7 @@
             </div>
             <div class="product-card">
                 <div>
-                    <img src="static/img/bananas.jpeg" alt="Product 3">
+                    <img src="{% static 'img/bananas.jpeg' %}" alt="Product 3">
                     <h3>Organic Bananas</h3>
                     <p>$1.29 / lb</p>
                 </div>
@@ -35,7 +47,7 @@
             </div>
             <div class="product-card">
                 <div>
-                    <img src="static/img/spanich.jpg" alt="Product 4">
+                    <img src="{% static 'img/spinach.jpg' %}" alt="Product 4">
                     <h3>Fresh Spinach</h3>
                     <p>$2.99 / bunch</p>
                 </div>
@@ -44,4 +56,26 @@
             </div>
         </div>
     </div>
+
+     <!-- JavaScript for the slider -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ads = document.querySelectorAll('.ad');
+            let currentAd = 0;
+
+            function nextAd() {
+                // Remove 'active' class from current image
+                ads[currentAd].classList.remove('active');
+                
+                // Move to next image (loop back to 0 if at the end)
+                currentAd = (currentAd + 1) % ads.length;
+                
+                // Add 'active' class to new image
+                ads[currentAd].classList.add('active');
+            }
+
+            // Change image every 3 seconds (3000 milliseconds)
+            setInterval(nextAd, 3000);
+        });
+    </script>
 {% endblock content %}
